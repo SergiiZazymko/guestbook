@@ -39,9 +39,21 @@ class Conference
      */
     private $comments;
 
+    /**
+     * Conference constructor.
+     *
+     */
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->city . ' ' . $this->year;
     }
 
     /**
@@ -117,6 +129,10 @@ class Conference
         return $this->comments;
     }
 
+    /**
+     * @param Comment $comment
+     * @return $this
+     */
     public function addComment(Comment $comment): self
     {
         if (!$this->comments->contains($comment)) {
@@ -127,6 +143,10 @@ class Conference
         return $this;
     }
 
+    /**
+     * @param Comment $comment
+     * @return $this
+     */
     public function removeComment(Comment $comment): self
     {
         if ($this->comments->contains($comment)) {
